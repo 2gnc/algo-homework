@@ -18,7 +18,14 @@ console.log('время выполнения', new Date() - tSt);
 
 const Sug = new Suggestr(streets);
 
-const dd = new Date();
-console.log(Sug.suggest('мари'));
+const dd = performance.now();
+console.log('вариант влоб', Sug.vlob('лени'));
 
-console.log(new Date() - dd);
+console.log(performance.now() - dd);
+
+
+// сценарий 2: предварительно обработаем массив
+// вызовем у нужных выборок поиск
+const kk = performance.now();
+console.log(Sug.suggestV2('лени'));
+console.log(performance.now() - kk);
