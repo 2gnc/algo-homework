@@ -10,6 +10,7 @@ export default class Suggestr {
     this.data = data;
     this.dataVol = data.length;
     this.dataSorted = this.dataSort();
+    this.dataSortedByAlphabet = this.dataSortV2();
   }
 
   /**
@@ -29,6 +30,15 @@ export default class Suggestr {
     return preSorted;
   }
 
+  dataSortV2() {
+    const sorted = {};
+    return sorted;
+  }
+
+/*  suggestV3(input) {
+
+  }*/
+
   suggestV2(input) {
 
     const variants = [];
@@ -41,12 +51,15 @@ export default class Suggestr {
         let smallerArr = this.dataSorted[key];
         for (let i = 0; i < smallerArr.length; i += 1) {
           if (mask.test(smallerArr[i])) {
-            count += 1;
             variants.push(smallerArr[i]);
+            count += 1;
+            if (count === 10) {
+              break;
+            }
           }
-          if (count === 10) {
-            break;
-          }  
+        }
+        if (count === 10) {
+          break;
         }
       }
     }
