@@ -12,20 +12,21 @@ const x = scrb(1);
 x.forEach((itm) => {
   em.on(evA, itm);
 });
-const tSt = new Date();
 em.emit(evA);
-console.log('время выполнения', new Date() - tSt);
 
 const Sug = new Suggestr(streets);
 
 const dd = performance.now();
-console.log('вариант влоб', Sug.vlob('лени'));
+console.log('вариант влоб', Sug.vlob('оле'));
 
 console.log(performance.now() - dd);
 
-
-// сценарий 2: предварительно обработаем массив
-// вызовем у нужных выборок поиск
 const kk = performance.now();
-console.log(Sug.suggestV2('лени'));
+console.log('предварительная сортировка по длинне строки', Sug.suggestV2('оле'));
 console.log(performance.now() - kk);
+
+console.log('*****');
+const tt = performance.now();
+const xx = Sug.simpleBoyerMur('Ale');
+console.log(xx);
+console.log(performance.now() - tt);
